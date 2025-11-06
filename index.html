@@ -147,10 +147,10 @@ GUZZO CLICKER!
             total_cutucadas.innerHTML = (cutucadas-Math.round(preco)) + ' cutucadas';
             cutucadas-=Math.round(preco);
             var preco = 10*1.1**vetores
+            cria_vetor();
         }
         const total_vetores = document.querySelector('h3')
         total_vetores.innerHTML = 'Preço: ' + Math.round(preco) + ' cutucadas';
-        cria_vetor();
     }
     setInterval(function() {
         if (vetores > 0) {
@@ -179,4 +179,5 @@ Preço: 10 cutucadas
 
 </body>
 </html>
+
 
