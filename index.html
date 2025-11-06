@@ -17,15 +17,14 @@
 <body style="text-align: center;">
 <style>
     body{background-color: rgb(161, 187, 153);
-    overflow: hidden;
     }
 </style>
-<h1>
+<h1 style="position: relative; z-index: 10;">
 <style>h1{font-family: 'fonte_epica'}</style>
 GUZZO CLICKER!
 </h1>
 
-<h2>
+<h2 style="position: relative; z-index: 10;">
 0 cutucadas
 </h2>
 <style>
@@ -146,7 +145,7 @@ GUZZO CLICKER!
             const total_cutucadas = document.querySelector('h2');
             total_cutucadas.innerHTML = (cutucadas-Math.round(preco)) + ' cutucadas';
             cutucadas-=Math.round(preco);
-            var preco = 10*1.1**vetores
+            var preco = 10*1.1**vetores;
             cria_vetor();
         }
         const total_vetores = document.querySelector('h3')
@@ -166,18 +165,15 @@ GUZZO CLICKER!
 </script>
 <br>
 <br>
-<br>
 <div>
     <button id="botao2" class="botao-imagem" type="button" onclick="compra()" onmousedown="efeito2()" onmouseup="desfeito2()" style="position: relative; z-index: 10;">
     <img id="compra" src=comprar_vetor.png alt="Guzzo em seu estado normal" width="300px">
 </button>
 </div>
-<h3>
+<h3 style="position: relative; z-index: 10; margin-top: 0;">
 Preço: 10 cutucadas
 </h3>
 
 
 </body>
 </html>
-
-
