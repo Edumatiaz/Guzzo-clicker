@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guzzo Clicker</title>
+</head>
+<!-- importando a fonte -->
+<style>
+@font-face {
+          font-family: 'fonte_epica';
+          src: url('FFCommaTrial-Regular.ttf') format('truetype'); 
+        }
+</style>
+<!-- código -->
+
+<body style="text-align: center;">
+<style>
+    body{background-color: rgb(161, 187, 153)}
+</style>
+<h1>
+<style>h1{font-family: 'fonte_epica'}</style>
+GUZZO CLICKER!
+</h1>
+
+<h2>
+0 cutucadas
+</h2>
+<style>
+.botao-imagem {
+  background-color: transparent; 
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.botao-imagem img {
+  display: block;
+}
+</style>
+<button id="botao" class="botao-imagem" type="button" onmousedown="efeito()" onmouseup="desfeito()" onclick="clicada()">
+    <img id="imagem" src=guzzo_normal-Photoroom.png alt="Guzzo em seu estado normal" width="300px">
+</button>
+
+<script>
+    var cutucadas = 0;
+    var contador_triste = 0;
+    let timer;
+    function clicada() {
+        const total_cutucadas = document.querySelector('h2')
+        clearTimeout(timer);
+        cutucadas++ 
+        total_cutucadas.innerHTML = cutucadas+' cutucadas'
+        if (contador_triste == 5){
+            modoEMO()
+            contador_triste=0;
+        }
+        else if (Math.random() < 0.5){
+            document.getElementById("imagem").src = "guzzo_triste-Photoroom.png"
+            timer = setTimeout(VoltaAoNormal, 1500);
+            contador_triste+=1;
+        }
+        else {
+            document.getElementById("imagem").src = "guzzo_bravo-Photoroom.png"
+            timer = setTimeout(VoltaAoNormal, 1500);
+            contador_triste=0;
+        }
+
+
+    }
+    function VoltaAoNormal(){
+        document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
+
+
+    }
+    function modoEMO() {
+            document.body.style.backgroundColor = 'black';
+            document.body.style.color = 'white';
+            const botao = document.getElementById('botao');
+            document.getElementById("imagem").src = "guzzo_emo.png"
+            botao.disabled = true;
+            setTimeout(function() {
+                botao.disabled = false;
+                document.body.style.color = 'black';
+                document.body.style.backgroundColor = 'rgb(161, 187, 153)';
+                document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
+            }, 3000);
+    }
+
+
+
+    function efeito(){
+        document.getElementById("imagem").style.width = "285px";
+    }
+    function desfeito(){
+        document.getElementById("imagem").style.width = "300px";
+    }
+
+    function efeito2(){
+        document.getElementById("compra").style.width = "285px";
+    }
+    function desfeito2(){
+        document.getElementById("compra").style.width = "300px";
+    }
+
+
+
+    var vetores=0;
+    function compra(){
+        vetores+=1;
+        //spawn vetor
+}
+    setInterval(function() {
+        if (vetores > 0) {
+            cutucadas += vetores;
+            const total_cutucadas = document.querySelector('h2');
+            total_cutucadas.innerHTML = cutucadas + ' cutucadas';
+        }
+    }, 1000);
+</script>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <button id="botao2" class="botao-imagem" type="button" onclick="compra()" onmousedown="efeito2()" onmouseup="desfeito2()">
+    <img id="compra" src=comprar_vetor.png alt="Guzzo em seu estado normal" width="300px">
+</button>
+</div>
+
+
+</body>
+</html>
