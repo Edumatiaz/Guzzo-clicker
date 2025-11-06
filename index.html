@@ -27,6 +27,9 @@ GUZZO CLICKER!
 <h2 style="position: relative; z-index: 10;">
 0 cutucadas
 </h2>
+<h3 id="c/s" style="position: relative; z-index: 10; margin-top: 0;">
+cutucadas/segundo: 0
+</h3>
 <style>
 .botao-imagem {
   background-color: transparent; 
@@ -148,8 +151,10 @@ GUZZO CLICKER!
             var preco = 10*1.1**vetores;
             cria_vetor();
         }
-        const total_vetores = document.querySelector('h3')
+        const total_vetores = document.getElementById("preco")
         total_vetores.innerHTML = 'Preço: ' + Math.round(preco) + ' cutucadas';
+        const total_cs = document.getElementById("c/s")
+        total_cs.innerHTML = 'cutucadas/segundo: ' + vetores;
     }
     setInterval(function() {
         if (vetores > 0) {
@@ -170,7 +175,7 @@ GUZZO CLICKER!
     <img id="compra" src=comprar_vetor.png alt="Guzzo em seu estado normal" width="300px">
 </button>
 </div>
-<h3 style="position: relative; z-index: 10; margin-top: 0;">
+<h3 id="preco" style="position: relative; z-index: 10; margin-top: 0;">
 Preço: 10 cutucadas
 </h3>
 
