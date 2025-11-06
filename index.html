@@ -16,7 +16,9 @@
 
 <body style="text-align: center;">
 <style>
-    body{background-color: rgb(161, 187, 153)}
+    body{background-color: rgb(161, 187, 153);
+    overflow: hidden;
+    }
 </style>
 <h1>
 <style>h1{font-family: 'fonte_epica'}</style>
@@ -36,8 +38,14 @@ GUZZO CLICKER!
 .botao-imagem img {
   display: block;
 }
+.vetor_flutuante{
+    position: absolute;
+    width: 100px;
+    height: auto;
+    z-index: 1;
+}
 </style>
-<button id="botao" class="botao-imagem" type="button" onmousedown="efeito()" onmouseup="desfeito()" onclick="clicada()">
+<button id="botao" class="botao-imagem" type="button" onmousedown="efeito()" onmouseup="desfeito()" onclick="clicada()" style="position: relative; z-index: 10;">
     <img id="imagem" src=guzzo_normal-Photoroom.png alt="Guzzo em seu estado normal" width="300px">
 </button>
 
@@ -45,6 +53,13 @@ GUZZO CLICKER!
     var cutucadas = 0;
     var contador_triste = 0;
     let timer;
+    
+    function VoltaAoNormal(){
+        document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
+        document.body.style.backgroundImage = 'none';
+
+    }
+    var sem_cutucada = 0;
     function clicada() {
         const total_cutucadas = document.querySelector('h2')
         clearTimeout(timer);
@@ -56,22 +71,19 @@ GUZZO CLICKER!
         }
         else if (Math.random() < 0.5){
             document.getElementById("imagem").src = "guzzo_triste-Photoroom.png"
+            document.body.style.backgroundImage = 'none';
             timer = setTimeout(VoltaAoNormal, 1500);
             contador_triste+=1;
         }
         else {
             document.getElementById("imagem").src = "guzzo_bravo-Photoroom.png"
+            document.body.style.backgroundImage = 'none';
             timer = setTimeout(VoltaAoNormal, 1500);
             contador_triste=0;
         }
-
-
+        sem_cutucada=0;
     }
-    function VoltaAoNormal(){
-        document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
 
-
-    }
     function modoEMO() {
             document.body.style.backgroundColor = 'black';
             document.body.style.color = 'white';
@@ -85,7 +97,26 @@ GUZZO CLICKER!
                 document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
             }, 3000);
     }
+    function modoFELIZ() {
+            document.body.style.backgroundImage = "linear-gradient(to right, red, orange, yellow, green, blue, purple)";
+            document.getElementById("imagem").src = "guzzo_feliz.png"
+    }
+    function cria_vetor(){
+        const novoVetor=document.createElement('img');
+        novoVetor.src='vetor.png';
+        novoVetor.className='vetor_flutuante';
+        const imgSize=100;
+        const alturamaxima=window.innerHeight-imgSize;
+        const larguramaxima=window.innerWidth-imgSize;
+        const alturaaleatoria = Math.round(Math.random() * alturamaxima);
+        const larguraaleatoria = Math.round(Math.random() * larguramaxima);
+        const rotacaoaleatoria = Math.round(Math.random() * 360);
 
+        novoVetor.style.top = alturaaleatoria + 'px';
+        novoVetor.style.left = larguraaleatoria + 'px';
+        novoVetor.style.transform = 'rotate(' + rotacaoaleatoria + 'deg)';
+        document.body.appendChild(novoVetor);
+    }
 
 
     function efeito(){
@@ -112,28 +143,32 @@ GUZZO CLICKER!
         }
         else{
             vetores+=1;
-            var preco = 10*1.2**vetores
             const total_cutucadas = document.querySelector('h2');
             total_cutucadas.innerHTML = (cutucadas-Math.round(preco)) + ' cutucadas';
+            cutucadas-=Math.round(preco);
+            var preco = 10*1.2**vetores
         }
         const total_vetores = document.querySelector('h3')
         total_vetores.innerHTML = 'Preço: ' + Math.round(preco) + ' cutucadas';
-        //spawn vetor
-}
+        cria_vetor();
+    }
     setInterval(function() {
         if (vetores > 0) {
             cutucadas += vetores;
             const total_cutucadas = document.querySelector('h2');
             total_cutucadas.innerHTML = cutucadas + ' cutucadas';
         }
+        sem_cutucada+=1;
+        if (sem_cutucada == 30){
+        modoFELIZ();
+    }
     }, 1000);
 </script>
 <br>
 <br>
 <br>
-<br>
 <div>
-    <button id="botao2" class="botao-imagem" type="button" onclick="compra()" onmousedown="efeito2()" onmouseup="desfeito2()">
+    <button id="botao2" class="botao-imagem" type="button" onclick="compra()" onmousedown="efeito2()" onmouseup="desfeito2()" style="position: relative; z-index: 10;">
     <img id="compra" src=comprar_vetor.png alt="Guzzo em seu estado normal" width="300px">
 </button>
 </div>
@@ -144,4 +179,3 @@ Preço: 10 cutucadas
 
 </body>
 </html>
-
