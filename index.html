@@ -65,7 +65,7 @@ GUZZO CLICKER!
         clearTimeout(timer);
         cutucadas++ 
         total_cutucadas.innerHTML = cutucadas+' cutucadas'
-        if (contador_triste == 5){
+        if (contador_triste == 6){
             modoEMO()
             contador_triste=0;
         }
@@ -137,7 +137,7 @@ GUZZO CLICKER!
 
     var vetores=0;
     function compra(){
-        var preco = 10*1.2**vetores
+        var preco = 10*1.1**vetores
         if (cutucadas<Math.round(preco)){
             alert("Pobre.");
         }
@@ -146,7 +146,7 @@ GUZZO CLICKER!
             const total_cutucadas = document.querySelector('h2');
             total_cutucadas.innerHTML = (cutucadas-Math.round(preco)) + ' cutucadas';
             cutucadas-=Math.round(preco);
-            var preco = 10*1.2**vetores
+            var preco = 10*1.1**vetores
         }
         const total_vetores = document.querySelector('h3')
         total_vetores.innerHTML = 'Preço: ' + Math.round(preco) + ' cutucadas';
@@ -179,3 +179,4 @@ Preço: 10 cutucadas
 
 </body>
 </html>
+
