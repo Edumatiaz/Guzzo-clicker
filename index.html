@@ -106,19 +106,18 @@ GUZZO CLICKER!
 
     var vetores=0;
     function compra(){
-        vetores+=1;
         var preco = 10*1.2**vetores
         if (cutucadas<Math.round(preco)){
             alert("Pobre.");
-            vetores--;
-            var preco = 10*1.2**vetores;
         }
         else{
+            vetores+=1;
+            var preco = 10*1.2**vetores
             const total_cutucadas = document.querySelector('h2');
             total_cutucadas.innerHTML = (cutucadas-Math.round(preco)) + ' cutucadas';
         }
         const total_vetores = document.querySelector('h3')
-        total_vetores.innerHTML = 'Preço: ' + Math.round(preco);
+        total_vetores.innerHTML = 'Preço: ' + Math.round(preco) + ' cutucadas';
         //spawn vetor
 }
     setInterval(function() {
@@ -139,9 +138,10 @@ GUZZO CLICKER!
 </button>
 </div>
 <h3>
-Preço: 10
+Preço: 10 cutucadas
 </h3>
 
 
 </body>
 </html>
+
