@@ -16,9 +16,13 @@
 
 <body style="text-align: center;">
 <style>
-    body{background-color: rgb(161, 187, 153);
+    body{background-color: rgb(140, 180, 128);
     }
 </style>
+<br>
+<br>
+<br>
+<br>
 <h1 style="position: relative; z-index: 10;">
 <style>h1{font-family: 'fonte_epica'}</style>
 GUZZO CLICKER!
@@ -95,7 +99,7 @@ cutucadas/segundo: 0
             setTimeout(function() {
                 botao.disabled = false;
                 document.body.style.color = 'black';
-                document.body.style.backgroundColor = 'rgb(161, 187, 153)';
+                document.body.style.backgroundColor = 'rgb(140, 180, 128)';
                 document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
             }, 3000);
     }
@@ -134,6 +138,12 @@ cutucadas/segundo: 0
     }
     function desfeito2(){
         document.getElementById("compra").style.width = "300px";
+    }
+    function efeito3(){
+        document.getElementById("conquista").style.width = "92px";
+    }
+    function desfeito3(){
+        document.getElementById("conquista").style.width = "100px";
     }
 
 
@@ -179,6 +189,10 @@ cutucadas/segundo: 0
 <h3 id="preco" style="position: relative; z-index: 10; margin-top: 0;">
 Preço: 10 cutucadas
 </h3>
+
+<button id="botao3" class="botao-imagem" type="button" onmousedown="efeito3()" onmouseup="desfeito3()" onclick="x" style="position: fixed; top: 10px; left: 10px; z-index: 10;">
+    <img id="conquista" src=conquistas.png alt="Guzzo em seu estado normal" width="100px">
+</button>
 
 
 </body>
