@@ -140,10 +140,10 @@ cutucadas/segundo: 0
         document.getElementById("compra").style.width = "300px";
     }
     function efeito3(){
-        document.getElementById("conquista").style.width = "82px";
+        document.getElementById("conquista").style.width = "92px";
     }
     function desfeito3(){
-        document.getElementById("conquista").style.width = "90px";
+        document.getElementById("conquista").style.width = "100px";
     }
 
 
@@ -178,6 +178,10 @@ cutucadas/segundo: 0
         modoFELIZ();
     }
     }, 1000);
+    function conquistas(){
+        //abre lista de conquistas, cada conquista vai ter um bool, quando virar true
+        //adiciona uma linha no texto <del>assim</del>
+    }
 </script>
 <br>
 <br>
@@ -190,13 +194,11 @@ cutucadas/segundo: 0
 Preço: 10 cutucadas
 </h3>
 
-<button id="botao3" class="botao-imagem" type="button" onmousedown="efeito3()" onmouseup="desfeito3()" onclick="x" style="position: fixed; top: 10px; left: 10px; z-index: 10;">
-    <img id="conquista" src=conquistas.png alt="Guzzo em seu estado normal" width="90px">
+<button id="botao3" class="botao-imagem" type="button" onmousedown="efeito3()" onmouseup="desfeito3()" onclick="conquistas()" style="position: fixed; top: 10px; left: 10px; z-index: 10;">
+    <img id="conquista" src=conquistas.png alt="Guzzo em seu estado normal" width="100px">
 </button>
 
 
 </body>
 </html>
-
-
 
