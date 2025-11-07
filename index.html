@@ -113,8 +113,8 @@ cutucadas/segundo: 0
         novoVetor.src='vetor.png';
         novoVetor.className='vetor_flutuante';
         const imgSize=100;
-        const alturamaxima=window.innerHeight-imgSize;
-        const larguramaxima=window.innerWidth-imgSize;
+        const alturamaxima=window.innerHeight-imgSize* 1.42;
+        const larguramaxima=window.innerWidth-imgSize* 1.42;
         const alturaaleatoria = Math.round(Math.random() * alturamaxima);
         const larguraaleatoria = Math.round(Math.random() * larguramaxima);
         const rotacaoaleatoria = Math.round(Math.random() * 360);
@@ -197,5 +197,6 @@ Preço: 10 cutucadas
 
 </body>
 </html>
+
 
 
