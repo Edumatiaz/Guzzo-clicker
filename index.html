@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guzzo Clicker</title>
+    <style>
+    #modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        color:#ffffff;
+        z-index: 100;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #close-button {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        font-weight: bold;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #ffffff;
+    }
+</style>
 </head>
 <!-- importando a fonte -->
 <style>
@@ -58,7 +85,17 @@ cutucadas/segundo: 0
 <script>
     var cutucadas = 0;
     var contador_triste = 0;
+    var contador_bravo = 0;
     let timer;
+    var total_c = 0;
+    var um=false;
+    var dois=false;
+    var tres=false;
+    var quatro=false;
+    var cinco=false;
+    var seis=false;
+    var sete=false;
+    var oito=false;
     
     function VoltaAoNormal(){
         document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
@@ -71,20 +108,26 @@ cutucadas/segundo: 0
         clearTimeout(timer);
         cutucadas++ 
         total_cutucadas.innerHTML = cutucadas+' cutucadas'
-        if (contador_triste == 6){
+        if (contador_triste == 7){
             modoEMO()
             contador_triste=0;
+        }
+        else if (contador_bravo == 7){
+            modoFURIA()
+            contador_bravo=0;
         }
         else if (Math.random() < 0.5){
             document.getElementById("imagem").src = "guzzo_triste-Photoroom.png"
             document.body.style.backgroundImage = 'none';
             timer = setTimeout(VoltaAoNormal, 1500);
             contador_triste+=1;
+            contador_bravo=0;
         }
         else {
             document.getElementById("imagem").src = "guzzo_bravo-Photoroom.png"
             document.body.style.backgroundImage = 'none';
             timer = setTimeout(VoltaAoNormal, 1500);
+            contador_bravo++;
             contador_triste=0;
         }
         sem_cutucada=0;
@@ -96,6 +139,14 @@ cutucadas/segundo: 0
             const botao = document.getElementById('botao');
             document.getElementById("imagem").src = "guzzo_emo.png"
             botao.disabled = true;
+            const conquista_emo = document.getElementById('emoo');
+            conquista_emo.innerHTML = "<del>Deixe o Guzzo muito triste...</del>";
+            if (!seis){
+            total_c+=12.5
+            const total_conquistas = document.getElementById('total_cqs');
+            total_conquistas.innerHTML = "Total: "+total_c+"%";
+            seis=true;
+            }
             setTimeout(function() {
                 botao.disabled = false;
                 document.body.style.color = 'black';
@@ -103,10 +154,43 @@ cutucadas/segundo: 0
                 document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
             }, 3000);
     }
+
+    function modoFURIA() {
+            document.body.style.backgroundColor = 'red';
+            document.body.style.color = 'white';
+            const botao = document.getElementById('botao');
+            document.getElementById("imagem").src = "guzzo-furioso.png"
+            botao.disabled = true;
+            const conquista_furia = document.getElementById('furioso');
+            conquista_furia.innerHTML = "<del>Deixe o Guzzo muito bravo!</del>";
+            if (!oito){
+            total_c+=12.5
+            const total_conquistas = document.getElementById('total_cqs');
+            total_conquistas.innerHTML = "Total: "+total_c+"%";
+            oito=true;
+            }
+            setTimeout(function() {
+                botao.disabled = false;
+                document.body.style.color = 'black';
+                document.body.style.backgroundColor = 'rgb(140, 180, 128)';
+                document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
+            }, 3000);
+    }
+
     function modoFELIZ() {
             document.body.style.backgroundImage = "linear-gradient(to right, red, orange, yellow, green, blue, purple)";
             document.getElementById("imagem").src = "guzzo_feliz.png"
             contador_triste=0;
+            contador_bravo=0;
+            const conquista_feliz = document.getElementById('feliz');
+            conquista_feliz.innerHTML = "<del>Deixe o Guzzo em paz!</del>";
+            if (!sete){
+            total_c+=12.5
+            const total_conquistas = document.getElementById('total_cqs');
+            total_conquistas.innerHTML = "Total: "+total_c+"%";
+            sete=true;
+            }
+            
     }
     function cria_vetor(){
         const novoVetor=document.createElement('img');
@@ -176,11 +260,65 @@ cutucadas/segundo: 0
         sem_cutucada+=1;
         if (sem_cutucada == 30){
         modoFELIZ();
-    }
+        }
+        if (cutucadas>=100){
+            const conquista_100 = document.getElementById('100');
+            conquista_100.innerHTML = "<del>Cutuque o Guzzo 100 vezes!</del>";
+            if (!um){
+            total_c+=12.5
+            const total_conquistas = document.getElementById('total_cqs');
+            total_conquistas.innerHTML = "Total: "+total_c+"%";
+            um=true;
+            }
+        }
+        if (cutucadas>=1000){
+            const conquista_1000 = document.getElementById('1000');
+            conquista_1000.innerHTML = "<del>Cutuque o Guzzo 1000 vezes!</del>";
+            if (!dois){
+            total_c+=12.5
+            const total_conquistas = document.getElementById('total_cqs');
+            total_conquistas.innerHTML = "Total: "+total_c+"%";
+            dois=true;
+            }
+        }
+        if (cutucadas>=10000){
+            const conquista_10000 = document.getElementById('10000');
+            conquista_10000.innerHTML = "<del>Cutuque o Guzzo 10000 vezes!</del>";
+            if (!tres){
+            total_c+=12.5
+            const total_conquistas = document.getElementById('total_cqs');
+            total_conquistas.innerHTML = "Total: "+total_c+"%";
+            tres=true;
+            }
+        }
+        if (vetores>=10){
+            const conquista_10cs = document.getElementById('10c/s');
+            conquista_10cs.innerHTML = "<del>Alcance 10 cutucadas/segundo!</del>";
+            if (!quatro){
+            total_c+=12.5
+            const total_conquistas = document.getElementById('total_cqs');
+            total_conquistas.innerHTML = "Total: "+total_c+"%";
+            quatro=true;
+            }
+        }
+        if (vetores>=50){
+            const conquista_50cs = document.getElementById('50c/s');
+            conquista_50cs.innerHTML = "<del>Alcance 50 cutucadas/segundo!</del>";
+            if (!cinco){
+            total_c+=12.5
+            const total_conquistas = document.getElementById('total_cqs');
+            total_conquistas.innerHTML = "Total: "+total_c+"%";
+            cinco=true;
+            }
+        }
     }, 1000);
     function conquistas(){
-        //abre lista de conquistas, cada conquista vai ter um bool, quando virar true
-        //adiciona uma linha no texto <del>assim</del>
+        const modal = document.getElementById('modal-overlay');
+        modal.style.display = 'flex';
+    }
+    function fecharConquistas(){
+        const modal = document.getElementById('modal-overlay');
+        modal.style.display = 'none';
     }
 </script>
 <br>
@@ -198,7 +336,21 @@ Preço: 10 cutucadas
     <img id="conquista" src=conquistas.png alt="Guzzo em seu estado normal" width="100px">
 </button>
 
-
+<div id="modal-overlay">
+    <button id="close-button" type="button" onclick="fecharConquistas()">&times;</button>
+        <h2 style="font-family: 'fonte_epica';position: relative; z-index: 10;">Conquistas:</h2>
+        <h3 id="total_cqs" style="font-family: 'fonte_epica'; position: relative; z-index: 10;margin-top: 0;">Total: 0%</h3>
+            <ul>
+            <li id="100">Cutuque o Guzzo 100 vezes!</li>
+            <li id="1000">Cutuque o Guzzo 1000 vezes!</li>
+            <li id="10000">Cutuque o Guzzo 10000 vezes!</li>
+            <li id="10c/s">Alcance 10 cutucadas/segundo!</li>
+            <li id="50c/s">Alcance 50 cutucadas/segundo!</li>
+            <li id="emoo">Deixe o Guzzo muito triste...</li>
+            <li id="feliz">Deixe o Guzzo em paz!</li>
+            <li id="furioso">Deixe o Guzzo muito bravo!</li>
+            </ul>
+</div>
 </body>
 </html>
 
