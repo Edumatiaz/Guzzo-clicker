@@ -96,6 +96,9 @@ cutucadas/segundo: 0
     var seis=false;
     var sete=false;
     var oito=false;
+    var umquarto=false;
+    var metade=false;
+    var tresquartos=false;
     
     function VoltaAoNormal(){
         document.getElementById("imagem").src = "guzzo_normal-Photoroom.png"
@@ -106,7 +109,29 @@ cutucadas/segundo: 0
     function clicada() {
         const total_cutucadas = document.querySelector('h2')
         clearTimeout(timer);
-        cutucadas++ 
+        if(total_c>=75){
+            cutucadas+=8;
+            if(!tresquartos){
+                alert("75% das conquistas concluídas! Poder de cutucada duplicado!");
+                tresquartos=true;
+            }
+        }
+        else if(total_c>=50){
+            cutucadas+=4
+            if(!metade){
+                alert("50% das conquistas concluídas! Poder de cutucada duplicado!");
+                metade=true;
+            }
+        }
+        else if(total_c>=25){
+            cutucadas+=2
+            if(!umquarto){
+                alert("25% das conquistas concluídas! Poder de cutucada duplicado!");
+                umquarto=true;
+            }
+        }
+        else{
+        cutucadas++}
         total_cutucadas.innerHTML = cutucadas+' cutucadas'
         if (contador_triste == 7){
             modoEMO()
